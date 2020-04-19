@@ -128,7 +128,31 @@ func do_types() {
 	fmt.Println("a_struct =", a_struct)
 	fmt.Println()
 
+	type post struct {
+		id      int
+		title   string
+		content string
+	}
+	var p post
+	// Empty - defaults to zero and empty strings
+	fmt.Println("p =", p)
+	p.id = 64
+	p.title = "Go Programming"
+	p.content = "This is content"
+	fmt.Println("p =", p)
+	fmt.Println()
+
+	//
+	p2 := post{
+		id:      654,
+		title:   "A Title",
+		content: "Some content",
+	}
+	fmt.Println("p2 =", p2)
+	fmt.Println()
+
 	// Arrays - fixed size
+	// Array values must be of the same type
 	var arr1 [3]int
 	arr1[0] = 10
 	arr1[1] = 20
@@ -144,9 +168,10 @@ func do_types() {
 	fmt.Println()
 
 	// Slices
+	// Slice values must be of the same type
 	slc1 := arr2[:]
 	fmt.Println("slc1 =", slc1)
-	// The slice is pointing to the array, so updates change both
+	// The slice is pointing to the array, so updates to either change both
 	arr2[3] = "ten"
 	slc1[0] = "eleven"
 	fmt.Println("arr2 =", arr2)
@@ -156,6 +181,40 @@ func do_types() {
 	// Slices
 	slc2 := []int{9, 8, 7, 6}
 	fmt.Println("slc2 =", slc2)
+	fmt.Println()
+
+	// Slice operations - append
+	slc3 := []int{19, 18, 17}
+	fmt.Println("slc3 =", slc3)
+	slc3 = append(slc3, 16)
+	fmt.Println("slc3 =", slc3)
+	slc3 = append(slc3, 15, 14, 13, 199)
+	fmt.Println("slc3 =", slc3)
+	fmt.Println()
+
+	// Slice slice operator
+	// [starting index:ending index exclusive (not including)]
+	slc4 := []int{100, 200, 300, 400, 500}
+	slc5 := slc4[1:]
+	slc6 := slc4[:2]
+	slc7 := slc4[1:3]
+	fmt.Println("slc4 =", slc4)
+	fmt.Println("slc5 =", slc5)
+	fmt.Println("slc6 =", slc6)
+	fmt.Println("slc7 =", slc7)
+	fmt.Println()
+
+	// Maps
+	// string keys, int values
+	m := map[string]int{"one": 10, "two": 20, "three": 30}
+	fmt.Println("m =", m)
+	fmt.Println("m[\"two\"] =", m["two"])
+	m["two"] = 200
+	fmt.Println("m[\"two\"] =", m["two"])
+	fmt.Println()
+	// Removal of elements
+	delete(m, "one")
+	fmt.Println("m =", m)
 	fmt.Println()
 }
 
