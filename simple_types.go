@@ -12,6 +12,7 @@ const (
 )
 
 // Enum definition with iota
+// Iota resets in a new const block
 const (
 	v_1 = iota
 	v_2 = iota
@@ -125,6 +126,37 @@ func do_types() {
 	a_struct.b = 6.62607
 	a_struct.c = "alas, poor"
 	fmt.Println("a_struct =", a_struct)
+	fmt.Println()
+
+	// Arrays - fixed size
+	var arr1 [3]int
+	arr1[0] = 10
+	arr1[1] = 20
+	arr1[2] = 30
+	fmt.Println("arr1[1] =", arr1[1])
+	//fmt.Println("arr1[3] =", arr1[3]) // Error - Index out of bounds
+	fmt.Println("arr1 =", arr1)
+	fmt.Println()
+
+	// Arrays
+	arr2 := [4]string{"one", "two", "three", "four"}
+	fmt.Println("arr2 =", arr2)
+	fmt.Println()
+
+	// Slices
+	slc1 := arr2[:]
+	fmt.Println("slc1 =", slc1)
+	// The slice is pointing to the array, so updates change both
+	arr2[3] = "ten"
+	slc1[0] = "eleven"
+	fmt.Println("arr2 =", arr2)
+	fmt.Println("slc1 =", slc1)
+	fmt.Println()
+
+	// Slices
+	slc2 := []int{9, 8, 7, 6}
+	fmt.Println("slc2 =", slc2)
+	fmt.Println()
 }
 
 func main() {
